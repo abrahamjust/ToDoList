@@ -97,6 +97,8 @@ button svg {
 }
 
 .Task {
+    display: flex;
+    flex-direction: column;
     margin: 10px;
     display: flex;
     gap: 5px;
@@ -117,6 +119,11 @@ button svg {
 
 }
 
+.Exposed {
+    display: flex;
+    gap: 5px;
+}
+
 .Completed {
     background-color: #2ECC71;
 }
@@ -132,3 +139,13 @@ button svg {
 .Low {
     background-color: #42A5F5;
 }
+
+.Hidden {
+    padding: 10px;
+    display: none;
+}
+
+.Task.active .Hidden {
+    display: block;
+}
+
