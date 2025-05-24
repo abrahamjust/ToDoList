@@ -145,6 +145,7 @@ button svg {
     display: none;
 }
 
+/*must have both task and active class as parent of the hidden class*/
 .Task.active .Hidden {
     display: block;
 }
