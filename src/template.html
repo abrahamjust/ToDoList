@@ -36,7 +36,11 @@
                 </button>
                 <dialog id="addProjectDialog">
                     <button autofocus>Close</button>
-                    <p>Placeholder to get input about adding project</p>
+                    <form action="#" method="get" id="addProjectForm">
+                        <label for="project_name">Enter project name: </label><br>
+                        <input type="text" id="project_name" name="project_name">
+                        <button id="addProjectSubmit" type="submit">submit</button>
+                    </form>
                 </dialog>
                 Add project
             </div>
