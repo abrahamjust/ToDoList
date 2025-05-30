@@ -8,12 +8,7 @@
     <body>
 
         <header>
-            <svg width="55" height="55" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Rounded square background -->
-                <rect width="64" height="64" rx="12" ry="12" fill="#2978F0"/>
-                <!-- Checkmark -->
-                <path d="M18 34L28 44L46 22" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img src="assets/logo.svg" alt="Logo image">
             <div class="title">TaskNest</div>
         </header>
 
@@ -22,17 +17,7 @@
             <p>Projects</p>
             <div class="AddProject">
                 <button id="addProject">
-                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none">
-                        <!-- Folder back -->
-                        <path d="M15 40 H105 A5 5 0 0 1 110 45 V95 A5 5 0 0 1 105 100 H15 A5 5 0 0 1 10 95 V45 A5 5 0 0 1 15 40 Z" fill="#2978F0"/>
-                        <!-- Folder tab -->
-                        <path d="M20 30 H55 L65 40 H20 A5 5 0 0 1 15 35 A5 5 0 0 1 20 30 Z" fill="#6AA9FF"/>
-                        <!-- Plus sign circle -->
-                        <circle cx="90" cy="40" r="14" fill="#FFFFFF" stroke="#2978F0" stroke-width="3"/>
-                        <!-- Plus sign -->
-                        <line x1="90" y1="34" x2="90" y2="46" stroke="#2978F0" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="84" y1="40" x2="96" y2="40" stroke="#2978F0" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
+                    <img src="assets/AddProject.svg" alt="Add project button">
                 </button>
                 <dialog id="addProjectDialog">
                     <button autofocus>Close</button>
@@ -45,36 +30,16 @@
                 Add project
             </div>
             
-
-            <div class="Project">
-                <svg width="40" height="40" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none">
-                    <!-- Folder back -->
-                    <path d="M15 40 H105 A5 5 0 0 1 110 45 V95 A5 5 0 0 1 105 100 H15 A5 5 0 0 1 10 95 V45 A5 5 0 0 1 15 40 Z" fill="#2978F0"/>
-                    <!-- Folder tab -->
-                    <path d="M20 30 H55 L65 40 H20 A5 5 0 0 1 15 35 A5 5 0 0 1 20 30 Z" fill="#6AA9FF"/>
-                    <!-- Inner document line -->
-                    <line x1="30" y1="60" x2="90" y2="60" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="30" y1="72" x2="85" y2="72" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="30" y1="84" x2="70" y2="84" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-                </svg>
-                <p class="Project-title">
-                    Default Project
-                </p>
-                <dialog id="modifyProjectDialog">
-                    <button autofocus id="closeModifyProject">Close</button>
-                    <p>Placeholder to get input about modifying projects</p>
-                </dialog>
-            </div>
+            <!--Project section-->
+            
         </div>
 
+        <!--Tasks region-->
         <div class="Viewer">
             <div class="ViewerProjectTitle">Default Project</div>
             <div class="Task">
                 <div class="Exposed">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10" fill="#2ECC71"/>
-                        <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <img src="assets/completed.svg" alt="completed task">
                     <div class="Task_title Completed">Completed task</div>
                 </div>
                 <div class="Hidden">
@@ -83,11 +48,7 @@
             </div>
             <div class="Task">
                 <div class="Exposed">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10" fill="#FF4C4C"/>
-                        <rect x="11" y="6" width="2" height="8" fill="white"/>
-                        <rect x="11" y="16" width="2" height="2" fill="white"/>
-                    </svg>
+                    <img src="assets/urgent.svg" alt="urgent task">
                     <div class="Task_title Urgent">Urgent task</div>
                 </div>
                 <div class="Hidden">
@@ -96,11 +57,7 @@
             </div>
             <div class="Task">
                 <div class="Exposed">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L22 20H2L12 2Z" fill="#FFA500"/>
-                        <rect x="11" y="9" width="2" height="6" fill="white"/>
-                        <rect x="11" y="17" width="2" height="2" fill="white"/>
-                    </svg>
+                    <img src="assets/mediumPriority.svg" alt="medium priority task">
                     <div class="Task_title Medium">Medium priority</div>
                 </div>
                 <div class="Hidden">
@@ -109,10 +66,7 @@
             </div>
             <div class="Task">
                 <div class="Exposed">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10" fill="#42A5F5"/>
-                        <path d="M12 7V12L15 14" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+                    <img src="assets/lowPriority.svg" alt="low priority task">
                     <div class="Task_title Low">Low priority</div>
                 </div>
                 <div class="Hidden">
@@ -120,6 +74,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>

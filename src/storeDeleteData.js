@@ -1,3 +1,5 @@
+export {createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, editTaskUrgency, deleteTask};
+
 let projList = [];
 
 class Project {
@@ -7,8 +9,8 @@ class Project {
         this.taskList = [];
     }
 
-    createTask(name, description, urgency, status, date, index) {
-        this.taskList.push({name: name, description: description, urgency: urgency, status: status, date: date});
+    createTask(name, description, urgency, status, dueDate, index) {
+        this.taskList.push({name: name, description: description, urgency: urgency, status: status, dueDate: dueDate});
     }
 
     deleteTask(index) {
@@ -31,6 +33,10 @@ class Project {
         this.taskList[index].status = status;
     }
 
+    editTaskDueDate(index, dueDate) {
+        this.taskList[index].dueDate = dueDate;
+    }
+
 }
 
 function createProject(name) {
@@ -38,6 +44,12 @@ function createProject(name) {
     projList = loadProjects();
     let project = new Project(name);
     projList.push(project);
+    saveProjects();
+}
+
+function editProjectName(index, name) {
+    projList = loadProjects();
+    projList[index].name = name;
     saveProjects();
 }
 
@@ -83,6 +95,12 @@ function deleteProject(index) {
     saveProjects();
 }
 
+function editTaskDueDate(index, taskIndex, dueDate) {
+    projList = loadProjects();
+    projList[index].editTaskDate(taskIndex, dueDate);
+    saveProjects();
+}
+
 function revive(key, value) {
     if (value && typeof value === 'object' && 'name' in value && 'taskList' in value) {
     let p = new Project(value.name);
@@ -93,7 +111,7 @@ function revive(key, value) {
 }
 
 function loadProjects() {
-    return JSON.parse(localStorage.getItem("project"), revive);
+    return JSON.parse(localStorage.getItem("project") || "[]", revive);
 }
 
 function saveProjects() {
