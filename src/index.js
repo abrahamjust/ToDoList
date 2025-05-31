@@ -1,8 +1,6 @@
 import "./styles.css";
-import { Task } from "./taskExpandibles.js";
-import { showButtonForAddProject, closeButtonForAddProject, setupProjectDialogs} from "./handleDialog.js";
+import {initializeApp} from "./dataHandler.js";
 
-import { addProjectDiv } from "./domHandler.js";
-
-addProjectDiv();
-setupProjectDialogs();
+document.addEventListener("DOMContentLoaded", () => {
+  initializeApp();
+});
