@@ -78,7 +78,7 @@ function createProjectDiv(name, id) {
         let addTaskButtonImg = document.createElement("img");
         addTaskButtonImg.src = addTaskImg;
         addTaskButtonImg.alt = "Add task button";
-        addTaskButton.id = `addTaskButton-${id}`// can get the project that should populate the task section
+        addTaskButton.id = `addTaskButton-${id}`;// can get the project that should populate the task section
         addTaskButton.appendChild(addTaskButtonImg);
         viewerProjectTitle.appendChild(addTaskButton);
         viewer.appendChild(viewerProjectTitle);

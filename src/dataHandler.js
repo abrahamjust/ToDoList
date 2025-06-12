@@ -167,19 +167,13 @@ function initializeApp() {
     } else {
         renderAllProjects();
     }
-
-    let viewer = document.querySelector(".Viewer");
-    let viewerProjectTitle = document.createElement("div");
-    viewerProjectTitle.className = "ViewerProjectTitle";
-    viewerProjectTitle.innerHTML = "Default Project";
-    let addTaskButton = document.createElement("button");
-    addTaskButton.className = "addTask";
-    let addTaskButtonImg = document.createElement("img");
-    addTaskButtonImg.src = addTaskImg;
-    addTaskButtonImg.alt = "Add task button";
-    addTaskButton.appendChild(addTaskButtonImg);
-    viewerProjectTitle.appendChild(addTaskButton);
-    viewer.appendChild(viewerProjectTitle);
+    projList = loadProjects();
+    let id = projList[0].id;
+    console.log(id);
+    const event = new Event('click');
+    const element = document.getElementById(id);
+    element.dispatchEvent(event);
+    saveProjects();
 }
 
 function renderAllProjects() {
