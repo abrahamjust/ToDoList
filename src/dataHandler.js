@@ -1,5 +1,7 @@
 export {createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, editTaskUrgency, deleteTask, initializeApp};
-import { createProjectDiv } from "./domHandler";
+import { createProjectDiv } from "./domHandler.js";
+import { createTaskDivs } from "./taskDomHandler.js";
+import addTaskImg from './assets/addTask.svg';
 
 let projList = [];
 let projCounter = 0;
@@ -22,8 +24,9 @@ class Project {
         return null;
     }
 
-    createTask(name, description, urgency, status, dueDate) {
-        this.taskList.push({name: name, description: description, urgency: urgency, status: status, dueDate: dueDate, id: `task-${this.taskcounter++}`});
+    createTask(name, description, status, dueDate) {
+        this.taskList.push({name: name, description: description, status: status, dueDate: dueDate, id: `task-${this.taskcounter}`});
+        this.taskcounter++;
     }
 
     deleteTask(taskID) {
@@ -33,10 +36,6 @@ class Project {
                 break;
             }
         }
-    }
-
-    editTaskUrgency(taskID, urgency) {
-        this.getTask(taskID).urgency = urgency;
     }
 
     editTaskDescription(taskID, description) {
@@ -168,6 +167,19 @@ function initializeApp() {
     } else {
         renderAllProjects();
     }
+
+    let viewer = document.querySelector(".Viewer");
+    let viewerProjectTitle = document.createElement("div");
+    viewerProjectTitle.className = "ViewerProjectTitle";
+    viewerProjectTitle.innerHTML = "Default Project";
+    let addTaskButton = document.createElement("button");
+    addTaskButton.className = "addTask";
+    let addTaskButtonImg = document.createElement("img");
+    addTaskButtonImg.src = addTaskImg;
+    addTaskButtonImg.alt = "Add task button";
+    addTaskButton.appendChild(addTaskButtonImg);
+    viewerProjectTitle.appendChild(addTaskButton);
+    viewer.appendChild(viewerProjectTitle);
 }
 
 function renderAllProjects() {

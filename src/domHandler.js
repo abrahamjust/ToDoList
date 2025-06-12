@@ -1,5 +1,7 @@
 export {createProjectDiv};
 import projectImg from './assets/project.svg';
+import addTaskImg from './assets/addTask.svg';
+
 import {createProject, editProjectName, deleteProject} from './dataHandler.js';
 
 function createProjectDiv(name, id) {
@@ -64,6 +66,24 @@ function createProjectDiv(name, id) {
         dialog.showModal();
     });
 
+    // event listener to pull up tasks on the viewer side
+    project.addEventListener("click", () => {
+        let viewer = document.querySelector(".Viewer");
+        viewer.innerHTML = '';
+        let viewerProjectTitle = document.createElement("div");
+        viewerProjectTitle.className = "ViewerProjectTitle";
+        viewerProjectTitle.innerHTML = name;
+        let addTaskButton = document.createElement("button");
+        addTaskButton.className = "addTask";
+        let addTaskButtonImg = document.createElement("img");
+        addTaskButtonImg.src = addTaskImg;
+        addTaskButtonImg.alt = "Add task button";
+        addTaskButton.id = `addTaskButton-${id}`// can get the project that should populate the task section
+        addTaskButton.appendChild(addTaskButtonImg);
+        viewerProjectTitle.appendChild(addTaskButton);
+        viewer.appendChild(viewerProjectTitle);
+    });
+
     // even listener to close dialog
     closeButton.addEventListener("click", () => {
         dialog.close()
@@ -106,3 +126,6 @@ let addProjectClose = document.getElementById("addProjectClose");
 addProjectClose.addEventListener("click", () => {
     addProjectDialog.close();
 })
+
+
+
