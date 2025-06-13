@@ -1,7 +1,6 @@
 export {createProjectDiv};
 import projectImg from './assets/project.svg';
-import addTaskImg from './assets/addTask.svg';
-
+import { getProject } from './dataHandler.js';
 import {createProject, editProjectName, deleteProject} from './dataHandler.js';
 
 function createProjectDiv(name, id) {
@@ -68,20 +67,18 @@ function createProjectDiv(name, id) {
 
     // event listener to pull up tasks on the viewer side
     project.addEventListener("click", () => {
-        let viewer = document.querySelector(".Viewer");
-        viewer.innerHTML = '';
-        let viewerProjectTitle = document.createElement("div");
-        viewerProjectTitle.className = "ViewerProjectTitle";
-        viewerProjectTitle.innerHTML = name;
-        let addTaskButton = document.createElement("button");
-        addTaskButton.className = "addTask";
-        let addTaskButtonImg = document.createElement("img");
-        addTaskButtonImg.src = addTaskImg;
-        addTaskButtonImg.alt = "Add task button";
-        addTaskButton.id = `addTaskButton-${id}`;// can get the project that should populate the task section
-        addTaskButton.appendChild(addTaskButtonImg);
-        viewerProjectTitle.appendChild(addTaskButton);
-        viewer.appendChild(viewerProjectTitle);
+
+        // the below doesnt work because of closure. The name, even after changing remains the same so we have to update the name here.
+        // let text = document.querySelector("#ViewerProjectText");
+        // text.innerHTML = name;
+
+        // gets the updated name and hence, changes.
+        let updatedProject = getProject(id);
+        if(updatedProject) { // if the project is deleted, do nothing.
+            let text = document.querySelector("#ViewerProjectText");
+            text.innerHTML = updatedProject.name;
+            localStorage.setItem("currentProject", JSON.stringify(id));
+        }
     });
 
     // even listener to close dialog

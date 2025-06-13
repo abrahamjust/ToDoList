@@ -1,10 +1,13 @@
-export {createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, editTaskUrgency, deleteTask, initializeApp};
+export {getProject, createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, editTaskUrgency, deleteTask, initializeApp};
+export {loadCurrentID, saveCurrentID, currentProject}
+
 import { createProjectDiv } from "./domHandler.js";
 import { createTaskDivs } from "./taskDomHandler.js";
 import addTaskImg from './assets/addTask.svg';
 
 let projList = [];
 let projCounter = 0;
+let currentProject = 0;
 
 class Project {
 
@@ -68,11 +71,18 @@ function getProject(id) {
 
 function createProject(name) {
     // if no project has been created before this, return empty list
+
+    let text = document.querySelector("#ViewerProjectText");
+    text.innerHTML = name;
+
     projList = loadProjects();
     projCounter = loadCounter();
     console.log(projCounter);
     let project = new Project(name, projCounter);
     createProjectDiv(name, projCounter);
+    currentProject = loadCurrentID();
+    currentProject = projCounter;
+    saveCurrentID();
     projCounter++;
     projList.push(project);
     saveProjects();
@@ -82,7 +92,11 @@ function createProject(name) {
 function editProjectName(id, name) {
     getProject(id).name = name;
     saveProjects();
+    currentProject = loadCurrentID();
+    currentProject = id;
+    saveCurrentID();
     renderAllProjects();
+    // window.location.reload();
 }
 
 function createTask(id, name, description, urgency, status, date) {
@@ -124,6 +138,9 @@ function deleteProject(id) {
         }
     }
     saveProjects();
+    currentProject = loadCurrentID();
+    currentProject = 0;
+    saveCurrentID();
     renderAllProjects();
 }
 
@@ -158,6 +175,14 @@ function loadCounter() {
     return JSON.parse(localStorage.getItem("projectCounter") || "0");
 }
 
+function saveCurrentID() {
+    localStorage.setItem("currentProject", JSON.stringify(currentProject));
+}
+
+function loadCurrentID() {
+    return JSON.parse(localStorage.getItem("currentProject") || "0");
+}
+
 function initializeApp() {
     const initialized = JSON.parse(localStorage.getItem("initialized") || "false");
 
@@ -167,13 +192,6 @@ function initializeApp() {
     } else {
         renderAllProjects();
     }
-    projList = loadProjects();
-    let id = projList[0].id;
-    console.log(id);
-    const event = new Event('click');
-    const element = document.getElementById(id);
-    element.dispatchEvent(event);
-    saveProjects();
 }
 
 function renderAllProjects() {
@@ -182,6 +200,25 @@ function renderAllProjects() {
     for (let project of projList) {
         createProjectDiv(project.name, project.id);
     }
+    currentProject = loadCurrentID();
+    let textDiv = document.querySelector("#ViewerProjectText");
+    let text = projList[currentProject].name;
+    textDiv.innerHTML = text;
+    saveCurrentID();
+    saveProjects();
+}
+
+function renderAllTasks(projId) {
+    deleteTasks();
+    tasks = getProject(projId).taskList;
+    for(let task of tasks) {
+        createTaskDivs(task.name, task.description, task.status, task.dueDate, task.id);
+    }
+
+}
+
+function deleteTasks() {
+    document.querySelectorAll(".Task").forEach(task => task.remove());
 }
 
 function deleteProjects() {
