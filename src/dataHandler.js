@@ -1,6 +1,7 @@
 export {getProject, createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, deleteTask, initializeApp};
 export {loadCurrentID, saveCurrentID, currentProject}
 export { renderAllTasks }
+import { format } from "date-fns";
 
 import { createProjectDiv } from "./domHandler.js";
 import { createTaskDivs } from "./taskDomHandler.js";
@@ -88,6 +89,7 @@ function createProject(name) {
     projList.push(project);
     saveProjects();
     saveCounter();
+    deleteTasks();
 }
 
 function editProjectName(id, name) {
@@ -101,10 +103,11 @@ function editProjectName(id, name) {
 }
 
 function createTask(id, name, description, status, date) {
+    date = format(date, "yyyy-MM-dd");
     getProject(id).createTask(name, description, status, date);
     console.log(name, description, status, date);
     saveProjects();
-    renderAllTasks(id);
+    renderAllTasks(id); 
 }
 
 function editTaskDescription(id, taskID, description) {
@@ -147,6 +150,7 @@ function deleteProject(id) {
 }
 
 function editTaskDueDate(id, taskID, dueDate) {
+    dueDate = format(dueDate, "yyyy-MM-dd");
     getProject(id).editTaskDate(taskID, dueDate);
     saveProjects();
     renderAllTasks(id);
@@ -191,6 +195,8 @@ function initializeApp() {
 
     if (!initialized) {
         createProject("Default Project"); 
+        currentProject = loadCurrentID()
+        createTask(currentProject, "default task", "default task", "completed", new Date("2025-06-13"));
         localStorage.setItem("initialized", "true");
     } else {
         renderAllProjects();

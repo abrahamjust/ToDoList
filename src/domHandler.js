@@ -78,15 +78,14 @@ function createProjectDiv(name, id) {
             let text = document.querySelector("#ViewerProjectText");
             text.innerHTML = updatedProject.name;
             localStorage.setItem("currentProject", JSON.stringify(id));
+            renderAllTasks(id);
         }
-        let currentProject = JSON.parse(localStorage.getItem("currentProject") || "0");
-        renderAllTasks(currentProject);
     });
 
     // even listener to close dialog
     closeButton.addEventListener("click", () => {
         dialog.close()
-    })
+    });
 
     Submitbutton.addEventListener("click", (event) => {
         event.preventDefault();
@@ -95,14 +94,14 @@ function createProjectDiv(name, id) {
         editProjectName(projectID, userInput);
         form.reset();
         dialog.close(); 
-    })
+    });
 
     deleteButton.addEventListener("click", () => {
         console.log("project deleted");
         let projectID = deleteButton.closest("div").id;
         deleteProject(projectID);
         dialog.close();
-    })
+    });
 }
 
 let addProject = document.getElementById("addProject");
