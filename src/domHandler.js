@@ -113,8 +113,9 @@ let addProjectForm = document.getElementById("addProjectForm");
 let addProjectSubmit = document.getElementById("addProjectSubmit");
 addProjectSubmit.addEventListener("click", () => {
     let projName = document.getElementById("project_name").value;
-    console.log(projName);
-    createProject(projName);
+    if(projName != '') {
+        createProject(projName);
+    }
     addProjectForm.reset();
     addProjectDialog.close();
 })

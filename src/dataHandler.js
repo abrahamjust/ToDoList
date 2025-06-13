@@ -1,4 +1,4 @@
-export {getProject, createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, editTaskUrgency, deleteTask, initializeApp};
+export {getProject, createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, deleteTask, initializeApp};
 export {loadCurrentID, saveCurrentID, currentProject}
 
 import { createProjectDiv } from "./domHandler.js";
@@ -99,13 +99,8 @@ function editProjectName(id, name) {
     // window.location.reload();
 }
 
-function createTask(id, name, description, urgency, status, date) {
-    getProject(id).createTask(name, description, urgency, status, date);
-    saveProjects();
-}
-
-function editTaskUrgency(id, taskID, urgency) {
-    getProject(id).editTaskUrgency(taskID, urgency);
+function createTask(id, name, description, status, date) {
+    getProject(id).createTask(name, description, status, date);
     saveProjects();
 }
 

@@ -169,3 +169,12 @@ button svg {
     align-items: center;
     gap: 15px;
 }
+
+#addTaskDialog {
+    font-size: 1rem;
+}
+
+.addTaskName {
+    display: flex;
+    gap: 5px;
+}
