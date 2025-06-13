@@ -1,0 +1,10 @@
+<svg width="40" height="40" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Folder back -->
+  <path d="M15 40 H105 A5 5 0 0 1 110 45 V95 A5 5 0 0 1 105 100 H15 A5 5 0 0 1 10 95 V45 A5 5 0 0 1 15 40 Z" fill="#2978F0"></path>
+  <!-- Folder tab -->
+  <path d="M20 30 H55 L65 40 H20 A5 5 0 0 1 15 35 A5 5 0 0 1 20 30 Z" fill="#6AA9FF"></path>
+  <!-- Inner document lines -->
+  <line x1="30" y1="60" x2="90" y2="60" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></line>
+  <line x1="30" y1="72" x2="85" y2="72" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></line>
+  <line x1="30" y1="84" x2="70" y2="84" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"></line>
+</svg>

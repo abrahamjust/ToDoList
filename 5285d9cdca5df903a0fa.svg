@@ -1,0 +1,11 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Folder back -->
+  <path d="M15 40 H105 A5 5 0 0 1 110 45 V95 A5 5 0 0 1 105 100 H15 A5 5 0 0 1 10 95 V45 A5 5 0 0 1 15 40 Z" fill="#2978F0"></path>
+  <!-- Folder tab -->
+  <path d="M20 30 H55 L65 40 H20 A5 5 0 0 1 15 35 A5 5 0 0 1 20 30 Z" fill="#6AA9FF"></path>
+  <!-- Plus sign circle -->
+  <circle cx="90" cy="40" r="14" fill="#FFFFFF" stroke="#2978F0" stroke-width="3"></circle>
+  <!-- Plus sign -->
+  <line x1="90" y1="34" x2="90" y2="46" stroke="#2978F0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="84" y1="40" x2="96" y2="40" stroke="#2978F0" stroke-width="3" stroke-linecap="round"></line>
+</svg>
