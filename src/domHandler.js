@@ -1,7 +1,7 @@
 export {createProjectDiv};
 import projectImg from './assets/project.svg';
 import { getProject } from './dataHandler.js';
-import {createProject, editProjectName, deleteProject} from './dataHandler.js';
+import {createProject, editProjectName, deleteProject, renderAllTasks} from './dataHandler.js';
 
 function createProjectDiv(name, id) {
     let project = document.createElement("div");
@@ -79,6 +79,8 @@ function createProjectDiv(name, id) {
             text.innerHTML = updatedProject.name;
             localStorage.setItem("currentProject", JSON.stringify(id));
         }
+        let currentProject = JSON.parse(localStorage.getItem("currentProject") || "0");
+        renderAllTasks(currentProject);
     });
 
     // even listener to close dialog

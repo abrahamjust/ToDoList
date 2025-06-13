@@ -1,9 +1,9 @@
 export {getProject, createProject, deleteProject, editProjectName, createTask, editTaskName, editTaskDescription, editTaskDueDate, editTaskStatus, deleteTask, initializeApp};
 export {loadCurrentID, saveCurrentID, currentProject}
+export { renderAllTasks }
 
 import { createProjectDiv } from "./domHandler.js";
 import { createTaskDivs } from "./taskDomHandler.js";
-import addTaskImg from './assets/addTask.svg';
 
 let projList = [];
 let projCounter = 0;
@@ -29,6 +29,7 @@ class Project {
 
     createTask(name, description, status, dueDate) {
         this.taskList.push({name: name, description: description, status: status, dueDate: dueDate, id: `task-${this.taskcounter}`});
+        console.log(name, description, status, dueDate);
         this.taskcounter++;
     }
 
@@ -101,7 +102,9 @@ function editProjectName(id, name) {
 
 function createTask(id, name, description, status, date) {
     getProject(id).createTask(name, description, status, date);
+    console.log(name, description, status, date);
     saveProjects();
+    renderAllTasks(id);
 }
 
 function editTaskDescription(id, taskID, description) {
@@ -201,15 +204,17 @@ function renderAllProjects() {
     textDiv.innerHTML = text;
     saveCurrentID();
     saveProjects();
+    currentProject = loadCurrentID();
+    renderAllTasks(currentProject);
+    saveCurrentID();
 }
 
 function renderAllTasks(projId) {
     deleteTasks();
-    tasks = getProject(projId).taskList;
+    let tasks = getProject(projId).taskList;
     for(let task of tasks) {
         createTaskDivs(task.name, task.description, task.status, task.dueDate, task.id);
     }
-
 }
 
 function deleteTasks() {

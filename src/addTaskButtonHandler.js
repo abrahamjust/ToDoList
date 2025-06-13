@@ -19,7 +19,7 @@ form.addEventListener('submit', (event) => {
     const formData = new FormData(form);
 
     let currentProject = JSON.parse(localStorage.getItem("currentProject") || "0");
-    createTask(currentProject, formData.task_name, formData.description, formData.addTaskRadio, formData.addTaskDate); 
+    createTask(currentProject, formData.get("task_name"), formData.get("description"), formData.get("addTaskRadio"), formData.get("addTaskDate")); 
     
     dialog.close();
     form.reset();
