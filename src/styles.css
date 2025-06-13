@@ -143,6 +143,8 @@ button svg {
 .Hidden {
     padding: 10px;
     display: none;
+    background-color: rgb(237, 245, 248);
+    border-radius: 5px;
 }
 
 /*must have both task and active class as parent of the hidden class*/
@@ -177,4 +179,10 @@ button svg {
 .addTaskName {
     display: flex;
     gap: 5px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

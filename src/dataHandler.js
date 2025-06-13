@@ -28,7 +28,7 @@ class Project {
     }
 
     createTask(name, description, status, dueDate) {
-        this.taskList.push({name: name, description: description, status: status, dueDate: dueDate, id: `task-${this.taskcounter}`});
+        this.taskList.push({name: name, description: description, status: status, dueDate: dueDate, id: this.taskcounter});
         console.log(name, description, status, dueDate);
         this.taskcounter++;
     }
@@ -110,21 +110,25 @@ function createTask(id, name, description, status, date) {
 function editTaskDescription(id, taskID, description) {
     getProject(id).editTaskDescription(taskID, description);
     saveProjects();
+    renderAllTasks(id);
 }
 
 function editTaskName(id, taskID, name) {
     getProject(id).editTaskName(taskID, name);
     saveProjects();
+    renderAllTasks(id);
 }
 
 function editTaskStatus(id, taskID, status) {
     getProject(id).editTaskStatus(taskID, status);
     saveProjects();
+    renderAllTasks(id);
 }
 
 function deleteTask(id, taskID) {
     getProject(id).deleteTask(taskID);
     saveProjects();
+    renderAllTasks(id);
 }
 
 function deleteProject(id) {
@@ -145,6 +149,7 @@ function deleteProject(id) {
 function editTaskDueDate(id, taskID, dueDate) {
     getProject(id).editTaskDate(taskID, dueDate);
     saveProjects();
+    renderAllTasks(id);
 }
 
 function revive(key, value) {
